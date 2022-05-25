@@ -26,6 +26,11 @@ export class CreateTasks1653515975380 implements MigrationInterface {
           default: false
         },
         {
+          name: 'active',
+          type: 'boolean',
+          default: true,
+        },
+        {
           name: 'created_at',
           type: 'timestamp',
           default: 'CURRENT_TIMESTAMP(6)'

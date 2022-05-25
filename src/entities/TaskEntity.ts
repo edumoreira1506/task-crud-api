@@ -12,6 +12,9 @@ export default class TaskEntity {
   @Column({ type: 'boolean' })
     finished: boolean
 
+  @Column({ type: 'boolean' })
+    active: boolean
+
   @CreateDateColumn({ name: 'created_at' })
     createdAt: Date
 }
