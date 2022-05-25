@@ -1,6 +1,8 @@
 import { DataSource } from 'typeorm'
 import dotEnv from 'dotenv'
 
+import TaskEntity from '../entities/TaskEntity'
+
 dotEnv.config()
 
 const { DB_HOST, DB_PASSWORD, DB_USERNAME, DB_NAME } = process.env
@@ -22,7 +24,7 @@ export const dataSource = new DataSource({
   username: DB_USERNAME,
   password: DB_PASSWORD,
   database: DB_NAME,
-  entities: [],
+  entities: [TaskEntity],
   logging: true,
   migrations: [
     isProduction ? 'build/database/migrations/**/*.js' : 'src/database/migrations/**/*.ts'
