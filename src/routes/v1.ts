@@ -12,4 +12,9 @@ router.post(
   TaskController.store
 )
 
+router.get(
+  '/tasks',
+  TaskController.index
+)
+
 export default router

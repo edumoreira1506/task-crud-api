@@ -8,6 +8,7 @@ import TaskRepository from '@Repositories/TaskRepository'
 class TaskController  {
   constructor() {
     this.store = this.store.bind(this)
+    this.index = this.index.bind(this)
   }
 
   @BaseController.errorHandler()
@@ -20,6 +21,13 @@ class TaskController  {
     const task = await TaskRepository.save(taskDTO)
 
     return BaseController.successResponse(res, { task, message: i18n.__('messages.success') })
+  }
+
+  @BaseController.errorHandler()
+  async index(req: Request, res: Response): Promise<Response> {
+    const tasks = await TaskRepository.all()
+
+    return BaseController.successResponse(res, { tasks, message: i18n.__('messages.success') })
   }
 }
 

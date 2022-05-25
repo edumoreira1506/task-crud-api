@@ -7,7 +7,11 @@ const taskDocs = {
       method: 'post',
       title: 'Register task',
       objectSchema: storeTaskSchema
-    } 
+    },
+    {
+      method: 'get',
+      title: 'Get tasks'
+    }
   ])
 }
 
