@@ -25,6 +25,8 @@ class TaskController  {
 
     const task = await TaskRepository.save(taskDTO)
 
+    await delay(5000)
+
     return BaseController.successResponse(res, { task, message: i18n.__('messages.success') })
   }
 
