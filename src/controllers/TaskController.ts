@@ -4,13 +4,14 @@ import { BaseController, NotFoundError } from '@cig-platform/core'
 import i18n from '@Configs/i18n'
 import TaskBuilder from '@Builders/TaskBuilder'
 import TaskRepository from '@Repositories/TaskRepository'
-import { UpdateTaskRequest } from '@Types/request'
+import { TaskRequest } from '@Types/request'
 
 class TaskController  {
   constructor() {
     this.store = this.store.bind(this)
     this.index = this.index.bind(this)
     this.update = this.update.bind(this)
+    this.remove = this.remove.bind(this)
   }
 
   @BaseController.errorHandler()
@@ -34,7 +35,7 @@ class TaskController  {
 
   @BaseController.errorHandler()
   @BaseController.actionHandler(i18n.__('messages.updated'))
-  async update(req: UpdateTaskRequest): Promise<void> {
+  async update(req: TaskRequest): Promise<void> {
     const task = req.task
 
     if (!task) throw new NotFoundError()
@@ -47,6 +48,16 @@ class TaskController  {
       .build()
 
     await TaskRepository.update({ id: task.id }, taskDTO)
+  }
+
+  @BaseController.errorHandler()
+  @BaseController.actionHandler(i18n.__('common.deleted'))
+  async remove(req: TaskRequest) {
+    const task = req.task
+
+    if (!task) throw new NotFoundError()
+
+    await TaskRepository.deleteById(task.id)
   }
 }
 

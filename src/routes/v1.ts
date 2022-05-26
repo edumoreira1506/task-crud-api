@@ -25,4 +25,10 @@ router.patch(
   TaskController.update
 )
 
+router.delete(
+  '/tasks/:taskId',
+  withTaskParam,
+  TaskController.remove
+)
+
 export default router

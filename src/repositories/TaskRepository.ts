@@ -7,6 +7,9 @@ const BaseRepository = BaseRepositoryFunctionsGenerator<Task>()
 
 const TaskRepository = dataSource.getRepository(Task).extend({
   ...BaseRepository,
+  deleteById(id: string) {
+    return this.updateById(id, { active: false })
+  }
 })
 
 export default TaskRepository

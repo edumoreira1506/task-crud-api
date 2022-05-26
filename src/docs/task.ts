@@ -18,6 +18,10 @@ const taskDocs = {
       method: 'patch',
       title: 'Edit task',
       objectSchema: updateTaskSchema
+    },
+    {
+      method: 'delete',
+      title: 'Remove task'
     }
   ], {
     pathVariables: [{ type: 'string', name: 'id' }]
