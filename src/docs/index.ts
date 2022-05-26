@@ -1,5 +1,5 @@
-import userDocs from '@Docs/user'
+import taskDocs from '@Docs/task'
 
 export default {
-  ...userDocs
+  ...taskDocs
 }
