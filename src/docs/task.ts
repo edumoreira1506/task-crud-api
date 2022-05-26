@@ -22,6 +22,10 @@ const taskDocs = {
     {
       method: 'delete',
       title: 'Remove task'
+    },
+    {
+      method: 'get',
+      title: 'Get task'
     }
   ], {
     pathVariables: [{ type: 'string', name: 'id' }]

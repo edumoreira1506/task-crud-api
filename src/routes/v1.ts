@@ -31,4 +31,10 @@ router.delete(
   TaskController.remove
 )
 
+router.get(
+  '/tasks/:taskId',
+  withTaskParam,
+  TaskController.show
+)
+
 export default router

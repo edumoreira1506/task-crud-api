@@ -14,6 +14,18 @@ class TaskController  {
     this.index = this.index.bind(this)
     this.update = this.update.bind(this)
     this.remove = this.remove.bind(this)
+    this.show = this.show.bind(this)
+  }
+
+  @BaseController.errorHandler()
+  async show(req: TaskRequest, res: Response): Promise<Response> {
+    const task = req.task
+
+    if (!task) throw new NotFoundError()
+
+    await delay(5000)
+
+    return BaseController.successResponse(res, { task, message: i18n.__('messages.success') })
   }
 
   @BaseController.errorHandler()
