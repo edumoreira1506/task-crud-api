@@ -6,6 +6,8 @@ import TaskBuilder from '@Builders/TaskBuilder'
 import TaskRepository from '@Repositories/TaskRepository'
 import { TaskRequest } from '@Types/request'
 
+const delay = (ms: number) => new Promise(res => setTimeout(res, ms))
+
 class TaskController  {
   constructor() {
     this.store = this.store.bind(this)
@@ -30,6 +32,8 @@ class TaskController  {
   async index(req: Request, res: Response): Promise<Response> {
     const tasks = await TaskRepository.all()
 
+    await delay(5000)
+
     return BaseController.successResponse(res, { tasks, message: i18n.__('messages.success') })
   }
 
@@ -47,6 +51,8 @@ class TaskController  {
       .setId(newTask.id)
       .build()
 
+    await delay(5000)
+
     await TaskRepository.update({ id: task.id }, taskDTO)
   }
 
@@ -57,6 +63,8 @@ class TaskController  {
 
     if (!task) throw new NotFoundError()
 
+    await delay(5000)
+    
     await TaskRepository.deleteById(task.id)
   }
 }
